@@ -1,12 +1,43 @@
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
+    background-color: #172164;
 }
 
 h1 {
-    color: #333;
+    color: red;
+    text-align: center;
+    text-shadow: 2px 2px black;
+    font-weight: bold;
+}
+#container {
+    text-align: center; /* Center text inside the container */
+    padding: 20px; /* Optional: Add some padding */
+    border: 1px solid #ccc; /* Optional: Add a border */
+    border-radius: 5px; /* Optional: Add rounded corners */
+    background-color: rgb(49, 138, 255); /* Optional: Set a background color for the form */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow effect */
 }
 
+input[type="file"] {
+    margin-bottom: 10px; /* Space between the input and button */
+}
+
+button {
+    padding: 10px 15px; /* Add some padding to the button */
+    background-color: #1E90FF; /* Button color */
+    color: white; /* Text color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Optional: Add rounded corners */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+button:hover {
+    background-color: #0e76a8; /* Darker shade on hover */
+}
 form {
     margin-top: 20px;
+    align-self: center;
+    align-items: center;
+    align-content: center;
 }
