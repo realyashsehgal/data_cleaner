@@ -7,7 +7,7 @@ def clean_data(input_file, output_file):
     data.drop_duplicates(inplace=True)
     missing_col = []
     for column in data:
-        if data[column].dtype == np.int64 or np.float64 and data[column].isnull().any():
+        if data[column].dtype == np.number and data[column].isnull().any():
             missing_col.append(column)
             print("hell")
             print(data[column])
