@@ -3,10 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"> -->
     <title>Data Cleaned</title>
 </head>
 <body>
     <h1>Data Cleaning Complete!</h1>
-    <a href="Data\cleaned\cleaned_dup.csv">Download Cleaned Data</a>
+    
+    <!-- Display the table passed from Flask -->
+    <div class="table-container">
+        {{ table_html|safe }}
+    </div>
+
+    <!-- Provide a download link for the cleaned file -->
+    <a href="{{ url_for('download_file', filename=filename) }}">Download Cleaned Data</a>
 </body>
 </html>

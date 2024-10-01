@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 import os
 from src.data_cleaner import clean_data
+import pandas as pd
 
 app = Flask(__name__)
 
@@ -41,9 +42,26 @@ def upload():
 
 
 # Route to display result or cleaned data (placeholder route)
-@app.route('/result')
-def result():
-    return "Cleaning complete. Your file has been cleaned."
+# @app.route('/result')
+# def result():
+#     return "Cleaning complete. Your file has been cleaned."
+@app.route('/result/<filename>')
+def result(filename):
+    # Read the cleaned file into a DataFrame
+    cleaned_filepath = os.path.join(app.config['CLEANED_DATA'], filename)
+    df = pd.read_csv(cleaned_filepath)
+
+    # Convert the DataFrame to an HTML table
+    table_html = df.to_html(classes='table table-striped', index=False)
+
+    # Render the result template and pass the table HTML
+    return render_template('result.html', table_html=table_html)
+
+
+@app.route('/download/<filename>')
+def download_file(filename):
+    return send_from_directory(app.config['CLEANED_DATA'], filename)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
