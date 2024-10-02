@@ -58,7 +58,20 @@ label[for="file"]:hover {
 .upload-button:hover {
     background: #45a049;
 }
+.show-button {
+    border: none;
+    padding: 10px 20px;
+    background: #4CAF50;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
 
+.show-button:hover {
+    background: #45a049;
+}
 /* Result Page Styles */
 .table-container {
     margin: 20px 0;
