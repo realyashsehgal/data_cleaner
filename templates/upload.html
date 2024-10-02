@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <title>Upload Data</title>
 </head>
-
 <body>
-    <h1>Upload Your Data Files</h1>
-    <div id = "container">
+    <div class="container">
+        <h1>Upload Your Data File</h1>
+        <p>Please select a CSV file to upload and clean the data.</p>
         <form action="/upload" method="post" enctype="multipart/form-data">
-            <input type="file" name="file" required>
-            <button type="submit">Upload</button>
+            <div class="file-upload">
+                <input type="file" name="file" id="file" required>
+                <label for="file">Choose File</label>
+            </div>
+            <button type="submit" class="upload-button">Upload</button>
         </form>
     </div>
 </body>
-
 </html>
