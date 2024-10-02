@@ -13,6 +13,7 @@
     <div class="table-container">
         {{ table_html|safe }}
     </div>
+    <p>Filename: {{ filename }}</p>
 
     <!-- Provide a download link for the cleaned file -->
     <a href="{{ url_for('download_file', filename=filename) }}">Download Cleaned Data</a>

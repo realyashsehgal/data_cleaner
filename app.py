@@ -6,7 +6,7 @@ from src.data_cleaner import clean_data
 app = Flask(__name__, template_folder='templates', static_folder='static') 
 
 app.config['UPLOAD_FILES'] = 'data/raw'  
-app.config['CLEANED_DATA'] = 'data/cleaned'
+app.config['CLEANED_DATA'] = 'Data/cleaned'
 
 os.makedirs(app.config['UPLOAD_FILES'], exist_ok=True)
 os.makedirs(app.config['CLEANED_DATA'], exist_ok=True)
@@ -42,11 +42,12 @@ def result(filename):
 
     table_html = df.to_html(classes='table table-striped', index=False)
 
-    return render_template('result.html', table_html=table_html)
+    return render_template('result.html', table_html=table_html,filename= filename)
 
 @app.route('/download/<filename>')
 def download_file(filename):
-    return send_from_directory(app.config['CLEANED_DATA'], filename)
+    print(filename)
+    return send_from_directory(app.config['CLEANED_DATA'], filename,as_attachment=True)
 
 if __name__ == '__main__':
     app.run(debug=True)
