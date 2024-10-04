@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <title>Upload Data</title>
 </head>
+
 <body>
     <div class="container">
         <h1>Upload Your Data File</h1>
@@ -15,9 +17,16 @@
                 <input type="file" name="file" id="file" required>
                 <label for="file">Choose File</label>
             </div>
-            <button type="submit" class="upload-button">Upload</button>
+            <button type="submit" class="upload-button" name="action" value="upload">Upload</button>
+            <button type="submit" class="show-button" name="action" value="show">Show</button>
+            <div class="table-container">
+                {% if table_html %}
+                <h2>Uploaded Data Preview</h2>
+                {{ table_html|safe }} 
+                {% endif %}
+            </div>
         </form>
     </div>
-    <button class="show-button">Show</button>
 </body>
+
 </html>
