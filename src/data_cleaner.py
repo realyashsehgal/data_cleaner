@@ -9,8 +9,6 @@ def clean_data(input_file, output_file):
     for column in data:
         if data[column].dtype == np.number and data[column].isnull().any():
             missing_col.append(column)
-            print("hell")
-            print(data[column])
     print(missing_col)
     for col in missing_col:
         imputer = SimpleImputer(strategy='mean')

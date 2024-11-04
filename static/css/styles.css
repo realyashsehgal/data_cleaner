@@ -93,6 +93,12 @@ label[for="file"]:hover {
     color: white;
 }
 
+label{
+    text-decoration: none;
+}
+#crazy{
+    list-style-type: none;
+}
 .download-button {
     display: inline-block;
     margin-top: 20px;

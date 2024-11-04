@@ -15,6 +15,19 @@
             {{ table_html|safe }}
         </div>
         <p><strong>Filename:</strong> {{ filename }}</p>
+        
+        <h3>Unique Numeric Values:</h3>
+        {% for column, values in unique_values.items() %}
+            <h4>Values in {{ column }}:</h4>
+            <ul>
+                {% for value in values %}
+                    <li>
+                        <input id="crazy" type="checkbox" id="value_{{ loop.index }}" name="selected_values" value="{{ value }}">
+                        <label for="value_{{ loop.index }}">{{ value }}</label>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
 
         <a href="{{ url_for('download_file', filename=filename) }}" class="download-button">Download Cleaned Data</a>
     </div>
