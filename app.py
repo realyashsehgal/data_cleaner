@@ -43,8 +43,6 @@ def upload():
     
     global cleaned_filepath
     cleaned_filepath = os.path.join(app.config['CLEANED_DATA'], f'cleaned_{file.filename}')
-    # Initially, save a copy of the uploaded file as the base "cleaned" file.
-    # file.save(cleaned_filepath)
     
     
     
@@ -72,7 +70,6 @@ def display():
 @app.route('/Handeling_null_values', methods=['POST'])
 def Handeling_null_values():
     Handeling_null(cleaned_filepath)
-    # return redirect(url_for('result', filename=f'cleaned_{file.filename}'))
     return render_template('work.html',filename=file.filename)
 
 
@@ -80,7 +77,6 @@ def Handeling_null_values():
 @app.route('/remove_duplicate',methods=['POST'])
 def remove_duplicate():
     Remove_duplicate(cleaned_filepath)
-    # return redirect(url_for('result', filename=f'cleaned_{file.filename}'))
     return render_template('work.html',filename=file.filename)
     
 
@@ -106,13 +102,10 @@ def result(filename):
     numeric_cols = []
     unique_values = {}
 
-    # Identify numeric columns and gather unique values
     for column in df.columns:
         if pd.api.types.is_numeric_dtype(df[column]):
             numeric_cols.append(column)
-            unique_values[column] = df[column].unique().tolist()  # Store unique values as a list
-
-    # Convert DataFrame to HTML
+            unique_values[column] = df[column].unique().tolist()  
     table_html = df.to_html(classes='table table-striped', index=False)
 
     return render_template('result.html', table_html=table_html, filename=filename, unique_values=unique_values)
@@ -121,7 +114,6 @@ def result(filename):
 
 @app.route('/preview',methods=['POST'])
 def preview():
-    # file_path = os.path.join(app.config['CLEANED_DATA'], file.filename)
     df = pd.read_csv(cleaned_filepath)
     table_html = df.to_html(classes='table table-striped', index=False)
     return render_template('work.html',table_html=table_html)
