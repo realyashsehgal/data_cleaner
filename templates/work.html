@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>THINGS YOU CAN DO</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/scirpt.js') }}"></script>
+</head>
+
+<body>
+    <div class="container">
+
+
+            <!-- <div class="table-container">
+                {% if table_html %}
+                <h2>Uploaded Data Preview</h2>
+                {{ table_html|safe }}
+                {% endif %}
+            </div> -->
+        <div>
+            <h2>Tasks you can do </h2>
+            <form action="Handeling_null_values" method="post" enctype="multipart/form-data">
+                
+            <button type="submit" class="show-button" name="action" value="Handel_Null">Handelling null values</button>
+            </form>
+            
+            <form action="remove_duplicate" method="post" enctype="multipart/form-data">
+                
+                <button type="submit" class="show-button" name="action" value="Handel_Null">Remove duplicate</button>
+                </form>
+                
+            <form action="Round" method="post" enctype="multipart/form-data">
+                
+                <button type="submit" class="show-button" name="action" value="Handel_Null">Round the numerical values</button>
+                </form>
+        </div>
+
+
+
+
+
+
+        <form action="/preview" method="post" enctype="multipart/form-data">
+            <p><strong>Filename:</strong> {{ filename }}</p>
+            <button type="submit" class="show-button" name="action" value="show">preview</button>
+            
+            <div class="table-container">
+            {{ table_html|safe }}
+            </div>
+        </form>
+<!-- THIS WILL BE IN THE OTHER HTML FILE -->
+
+    <form action="/clean" method="post" enctype="multipart/form-data">
+        <p><strong>Filename:</strong> {{ filename }}</p>
+        <button type="submit" class="show-button" name="action" value="show">result</button>
+    </form>
+
+
+
+
+    </div>
+</body>
+
+</html>

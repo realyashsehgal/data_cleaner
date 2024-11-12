@@ -16,7 +16,7 @@
         </div>
         <p><strong>Filename:</strong> {{ filename }}</p>
         
-        <h3>Unique Numeric Values:</h3>
+        <!-- <h3>Unique Numeric Values:</h3>
         {% for column, values in unique_values.items() %}
             <h4>Values in {{ column }}:</h4>
             <ul>
@@ -27,7 +27,7 @@
                     </li>
                 {% endfor %}
             </ul>
-        {% endfor %}
+        {% endfor %} -->
 
         <a href="{{ url_for('download_file', filename=filename) }}" class="download-button">Download Cleaned Data</a>
     </div>
