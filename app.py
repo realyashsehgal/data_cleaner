@@ -34,6 +34,10 @@ def upload():
     file = request.files['file']
     if file.filename == '':
         return redirect(request.url)  
+    
+    global cleaned_filepath
+    cleaned_filepath = os.path.join(app.config['CLEANED_DATA'], f'cleaned_{file.filename}')
+    file.save(cleaned_filepath)
     global file_path
     file_path = os.path.join(app.config['UPLOAD_FILES'], file.filename)
     file.save(file_path)
@@ -41,8 +45,6 @@ def upload():
     
     
     
-    global cleaned_filepath
-    cleaned_filepath = os.path.join(app.config['CLEANED_DATA'], f'cleaned_{file.filename}')
     
     
     

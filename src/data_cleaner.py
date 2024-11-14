@@ -2,8 +2,8 @@ import pandas as pd
 import numpy as np
 from sklearn.impute import SimpleImputer
 
-data = pd.read_csv('Data\\raw\\dup.csv')
-data.dtypes
+# data = pd.read_csv('Data\\raw\\dup.csv')
+# data.dtypes
 def Handeling_null(output_file):
     data = pd.read_csv(output_file)
     missing_col = []
@@ -31,7 +31,8 @@ def Remove_duplicate(output_file):
     
 def round_values(output_file):
     data = pd.read_csv(output_file)
+    data.dtypes
     for var in data:
-        if data[var].dtype == np.number:
-            round(data[var],2)
+        if data[var].dtype == np.float64:
+            data[var] = round(data[var],2)
     data.to_csv(output_file,index=False)
